@@ -1,6 +1,3 @@
-Lab requirements
-
-
 # Part 1: Create a declarative agent for Microsoft 365
 
 ## Requirements
