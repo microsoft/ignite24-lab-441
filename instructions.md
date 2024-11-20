@@ -1,28 +1,15 @@
-> [!IMPORTANT]
-> ATTENTION TESTERS
->
-> To speed up testing, you can copy and paste code blocks from instructions on GitHub.
-> Open a browser in the VM and type ++https://github.com/BobGerman/Ignite24-Labs/blob/main/LAB-441/instructions.md++ into the address bar.
+Lab requirements
 
-@lab.Title
-
-Login to your VM with the following credentials...
-
-**Username: ++@lab.VirtualMachine(Win11-Pro-Base-VM).Username++**
-
-**Password: +++@lab.VirtualMachine(Win11-Pro-Base-VM).Password+++** 
-
-Use this account to log into Microsoft 365:
-
-**Username: +++@lab.CloudPortalCredential(User1).Username+++**
-
-**Password: +++@lab.CloudPortalCredential(User1).Password+++**
-
-<br>
-
----
 
 # Part 1: Create a declarative agent for Microsoft 365
+
+## Requirements
+
+- Microsoft 365 tenant with Microsoft 365 Copilot enabled and custom app upload enabled
+- Visual Studio Code
+- Teams Toolkit extension
+
+## Overview
 
 In this lab you create a declarative agent for Microsoft 365 which can answer product support questions using information stored in documents in Microsoft 365. You will learn how to:
 
@@ -51,14 +38,10 @@ Start by creating a declarative agent project using Teams Toolkit for Visual Stu
     1. **Workspace folder**: Default folder
     1. **Application Name**: da-product-support
 
-!IMAGE[create-complete.png](instructions275666/lab441-ttk-new-project.png)
-
 Teams Toolkit opens the project in a new window.
 
 1. In the workspace trust dialog, select **Yes, I trust the authors**.
-1. Examine the contents of the README.md file to learn more about the project structure and key files.
-
-!IMAGE[create-complete.png](instructions275666/create-complete.png)
+1. Examine the contents of the **README.md** file to learn more about the project structure and key files.
 
 ### Step 2: Examine declarative agent manifest
 
@@ -114,30 +97,18 @@ Next, upload your declarative agent to your Microsoft 365 tenant.
 In Visual Studio Code:
 
 1. In the **Activity Bar**, open the **Teams Toolkit** extension.
-
-    !IMAGE[teams-toolkit-open.png](instructions275666/teams-toolkit-open.png)
-
 1. In the **Lifecycle** section, select **Provision**.
-
-    !IMAGE[create-complete.png](instructions275666/lab441-ttk-provision.png)
-
 1. In the prompt, select **Sign in** to authenticate your Microsoft 365 account with Teams Toolkit. A web browser is launched.
-
-!IMAGE[provision-sign-in.png](instructions275666/provision-sign-in.png)
 
 Continuing in the web browser:
 
-- Sign in using the Microsoft 365 account credentials:
-    - **Username**: +++@lab.CloudPortalCredential(User1).Username+++
-    - **Password**: +++@lab.CloudPortalCredential(User1).Password+++
+- Sign in using the Microsoft 365 account credentials.
 
 Once signed in, Teams Toolkit automatically starts the provisioning process.
 
 Continuing in Visual Studio Code:
 
 - Wait for the upload to complete before continuing.
-
-    !IMAGE[provision-complete.png](instructions275666/provision-complete.png)
 
 Next, review the output of the provisioning process.
 
@@ -153,42 +124,17 @@ Next, let's run the declarative agent in Microsoft 365 Copilot and validate its 
 In Visual Studio Code:
 
 1. In the **Activity Bar**, switch to the **Run and Debug** view.
-
-    !IMAGE[debug-open.png](instructions275666/debug-open.png)
-
 1. Select the **Start Debugging** button next to the configuration's dropdown, or press <kbd>F5</kbd>. A new browser window is launched and navigates to Microsoft 365 Copilot.
-
-    !IMAGE[debug-start.png](instructions275666/debug-start.png)
-
-    !IMAGE[debug-in-progress.png](instructions275666/debug-in-progress.png)
-
-    !IMAGE[debug-microsoft-365-copilot.png](instructions275666/debug-microsoft-365-copilot.png)
 
 Let's test the **in-context** experience.
 
 Continuing in the browser:
 
 1. In **Microsoft 365 Copilot** message box, enter the <kbd>@</kbd> symbol using your keyboard. A flyout appears with a list of available agents.
-
-    !IMAGE[test-in-context-agent-flyout.png](instructions275666/test-in-context-agent-flyout.png)
-
 1. In the flyout, select **Product support**. Notice the status message above the message box. It displays **Chatting with Product support** above the message box and **Product support is responding** in the chat, which signifies that you're using the in-context experience of the agent.
-
-    !IMAGE[test-in-context-agent.png](instructions275666/test-in-context-agent.png)
-
-1. In the message box, enter +++Hello+++ and submit your message.
-
-    !IMAGE[test-in-context-message.png](instructions275666/test-in-context-message.png)
-
+1. In the message box, enter **Hello** and submit your message.
 1. Wait for the response. Notice how the response starts with the text "Thanks for using Teams Toolkit to create your declarative agent!" as defined in the instructions you reviewed earlier.
-
-    !IMAGE[test-in-context-response.png](instructions275666/test-in-context-response.png)
-
 1. To exit the in-context experience, select the cross (X) in the status message. Notice the status message is removed and a message is displayed in the chat window that indicates that you're no longer chatting with the agent.
-
-    !IMAGE[test-in-context-exit.png](instructions275666/test-in-context-exit.png)
-
-    !IMAGE[test-in-context-exit-confirm.png](instructions275666/test-in-context-exit-confirm.png)
 
 ### Step 6: Test the "immersive" experience
 
@@ -197,14 +143,9 @@ Finally, let's test the **immersive** experience.
 Continuing in the browser:
 
 1. In **Microsoft 365 Copilot**, select the icon in the top right to expand the Copilot side panel. Notice that the panel displays recent chats and available agents.
-
-    !IMAGE[test-immersive-side-panel.png](instructions275666/test-immersive-side-panel.png)
-
 1. In the side panel, select **Product support** to enter the immersive experience and chat directly with the agent.
 1. In the message box, enter +++Hello+++ and submit your message.
 1. Send the message and wait for the response. Notice how the response starts with the text "Thanks for using Teams Toolkit to create your declarative agent!" as defined in the instructions you reviewed earlier.
-
-<!-- !IMAGE[test-immersive-response.png](instructions275666/test-immersive-response.png) -->
 
 Close the browser to stop the debug session in Visual Studio Code.
 
@@ -313,15 +254,15 @@ Continuing in Visual Studio Code:
 
 The contents of the **.env.dev** file should look like:
 
-  ```text
-  # This file includes environment variables that will be committed to git by default.
+    ```text
+    # This file includes environment variables that will be committed to git by default.
 
-  # Built-in environment variables
-  TEAMSFX_ENV=dev
-  APP_NAME_SUFFIX=dev
+    # Built-in environment variables
+    TEAMSFX_ENV=dev
+    APP_NAME_SUFFIX=dev
 
-  # Generated during provision, you can also add your own variables.
-  ```
+    # Generated during provision, you can also add your own variables.
+    ```
 
 Removing the environment variables forces Teams Toolkit to register a new application in Teams Developer Portal during the provisioning process.
 
@@ -348,17 +289,7 @@ In Visual Studio Code:
 In Visual Studio Code:
 
 1. In the **Activity Bar**, switch to the **Run and Debug** view.
-
-    !IMAGE[debug-open.png](instructions275666/debug-open.png)
-
 1. Select the **Start Debugging** button next to the configuration's dropdown, or press <kbd>F5</kbd>. A new browser window is launched and navigates to Microsoft 365 Copilot.
-
-    !IMAGE[debug-start.png](instructions275666/debug-start.png)
-
-    !IMAGE[debug-in-progress.png](instructions275666/debug-in-progress.png)
-
-    !IMAGE[debug-microsoft-365-copilot.png](instructions275666/debug-microsoft-365-copilot.png)
-
 1. Now test your declarative agent in Microsoft 365 and validate the results. First, let's test the instructions:
 
     * In **Microsoft 365 Copilot**, select the icon in the top right to **expand the Copilot side panel**.
@@ -366,33 +297,22 @@ In Visual Studio Code:
     * Select the sample prompt with the title **Learn more** and send the message.
     * Wait for the response. Notice how the response is different from the previous instructions and reflects the new instructions.
 
-    !IMAGE[test-custom-instructions.png](instructions275666/test-custom-instructions.png)
-
 Next, let's test the grounding data.
 
 1. In the message box, enter +++Tell me about Eagle Air+++ and send the message.
 1. Wait for the response. Notice that the response contains information about the Eagle Air drone. The response contains citations and references to the Eagle Air document stored on the Product marketing SharePoint Online site.
 
-    !IMAGE[test-product-info.png](instructions275666/test-product-info.png)
-
 Let's try a few more prompts:
 
 1. In the message box, enter +++Recommend a product suitable for a farmer+++ and send the message.
 1. Wait for the response. Notice that the response contains information about the Eagle Air and some extra context as to why the Eagle Air is recommended. The response contains citations and references to the Eagle Air document stored on the Product marketing SharePoint Online site.
-
-    !IMAGE[test-product-recommendation.png](instructions275666/test-product-recommendation.png)"
-
 1. In the message box, enter +++Explain why the Eagle Air is more suitable than Contoso Quad+++ and send the message.
 1. Wait for the response. Notice that the response explains in more detail why the Eagle Air is more suitable than the Contoso Quad for use by farmers.
-
-    !IMAGE[test-product-explanation.png](instructions275666/test-product-explanation.png)
 
 Finally, let's test the fallback response by asking a question that the agent can't answer:
 
 1. In the message box, enter +++When was Mark8 released?+++ and send the message.
 1. Wait for the response. Notice that the response suggests that the agent should reach out to the team responsible for further assistance as defined in the instructions.
-
-  !IMAGE[test-fallback.png](instructions275666/test-fallback.png)
 
 Close the browser to stop the debug session in Visual Studio Code.
 
@@ -510,11 +430,19 @@ Continuing in the web browser:
 1. In **Microsoft 365 Copilot**, select the icon in the top right to expand the **Copilot side panel**.
 1. Find **Product support** in the list of agents and select it to enter the immersive experience to chat directly with the agent. Notice that the conversation starters you defined in the manifest display in the user interface.
 
-!IMAGE[test-conversation-starters.png](instructions275666/test-conversation-starters.png)
-
 Close the browser to stop the debug session in Visual Studio Code.
 
 # Part 2: Create a custom engine agent
+
+## Requirements
+
+
+- Visual Studio 2022
+- Teams Toolkit for Visual Studio (Microsoft Teams development workload)
+- Azure subscription
+- Azure OpenAI service model deployment
+
+## Overview
 
 Custom engine agents are chatbots for Microsoft Teams powered by generative AI, designed to provide sophisticated conversational experiences. Custom engine agents are built using the Teams AI library, which provides comprehensive AI functionalities, including managing prompts, actions, and model integration as well as extensive options for UI customization. This ensures that your chatbots leverage the full range of AI capabilities while delivering a seamless and engaging experience aligned with Microsoft platforms.
 
@@ -536,9 +464,6 @@ Start with opening the starter project in Visual Studio 2022.
 1. Open **Visual Studio 2022**.
 1. In the Visual Studio 2022 welcome dialog, select **Continue without code**.
 1. Open the **File** menu, expand the **Open** menu and select **Project/solution...**.
-
-!IMAGE[create-complete.png](instructions275666/lab-441-vs-continuewithoutcode.png)
-
 1. In the **Open Project/Solution** file picker, on the left hand menu, select **This PC**.
 1. Double click **Local Disk (C:)**.
 1. Navigate to **C:\Users\LabUser\TeamsApps\cea-career-genie** folder.
@@ -548,39 +473,27 @@ Start with opening the starter project in Visual Studio 2022.
 
 The solution contains two projects:
 
-- **Custom.Engine.Agent**: This is an ASP.NET Core Web API project which contains your agent code. The agent logic and generative AI capatbilies are implemented using Teams AI library.
+- **Custom.Engine.Agent**: This is an ASP.NET Core Web API project which contains your agent code. The agent logic and generative AI capatbilies are implemented using Teams AI library. 
 - **TeamsApp**: This is a Teams Toolkit project which contains the app package files, environment, workflow and infrastructure files. You will use this project to provision the required resources for your agent.
 
 ### Step 3: Create dev tunnel
 
-Dev tunnels allow developers to securely share local web services across the internet. When users interact with the agent in Microsoft Teams, the Teams platform will send and recieve messages (called Activities) from your agent code via the Bot Framework. As the code is running on your local machine, the Dev Tunnel exposes the localhost domain which your web app runs on as a publicly accessible URL.
+Dev tunnels allow developers to securely share local web services across the internet. When users interact with the agent in Microsoft Teams, the Teams platform will send and recieve messages (called Activities) from your agent code via the Bot Framework. As the code is running on your local machine, the Dev Tunnel exposes the localhost domain which your web api runs on as a publicly accessible URL.
 
 Continue in Visual Studio:
 
 1. Open the **View** menu, expand **Other windows**, and select **Dev Tunnels**.
 1. In the **Dev Tunnels** pane, select the **plus (+)** icon.
-
-!IMAGE[create-complete.png](instructions275666/lab-441-vs-devtunnels.png)
-
-If you are prompted to log in, use your Microsoft 365 credentials (username is **Username: +++@lab.CloudPortalCredential(User1).Username+++** and 
-password is **Password: +++@lab.CloudPortalCredential(User1).Password+++**).
-
 1. In the dialog window, create the tunnel using the following settings:
-    1. **Account**: Select Add an account in the dropdown and follow the sign in for workplace or school account 
+    1. **Account**: Expand the dropdown and select **Sign in**, then select **Work or school account**, then again and select **OK**. Use your Microsoft 365 account details to sign in.
     1. **Name**: custom-engine-agent
     1. **Tunnel type**: Temporary
     1. **Access**: Public
 1. To create the tunnel, select **OK**.
 1. In the confirmation prompt, select **OK**.
+1. Close the Dev Tunnels window.
 
 ### Step 4: Configure Azure OpenAI key
-
-To save time we have already provisioned a language model in Azure for you to use in this lab. Teams Toolkit uses environment (.env) files to store values centrally that can be used across your application.
-
-In a web browser:
-
-1. In the address bar, type +++https://gist.github.com/garrytrinder/0da49ec4ba50b023e5b75a1c14fa1f22+++ and navigate to a GitHub gist containing environment variables.
-1. Copy the value of the **SECRET_AZURE_OPENAI_API_KEY** variable to your clipboard.
 
 Continue in Visual Studio:
 
@@ -588,20 +501,25 @@ Continue in Visual Studio:
 1. Rename **.env.local.user.sample** to **.env.local.user**.
 1. Open **.env.local.user** file.
 
-1. Update the contents of the file, replacing **[INSERT KEY]** with the value stored in your clipboard.
+1. Update the contents of the file, replacing [INSERT KEY] with the Azure Open AI service deployment API key.
 
-    ```text
+    ```
     SECRET_AZURE_OPENAI_API_KEY=[INSERT KEY]
     ```
 
 1. Save the changes.
 
 > [!NOTE]
->  When Teams Toolkit uses an environment variable with that is prefixed with **SECRET**, it will ensure that the value does not appear in any logs. 
+> When Teams Toolkit uses an environment variable with that is prefixed with **SECRET**, it will ensure that the value does not appear in any logs. 
+
+1. In the **TeamsApp** project, expand the **env** folder.
+1. Open the **.env.local** file.
+1. Replace the values of the **AZURE_OPENAI_ENDPOINT** and **AZURE_OPENAI_DEPLOYMENT_NAME** variables with your own deployment values.
+1. Save your changes.
 
 ## Exercise 2: Provision resources
 
-Teams Toolkit help developers automate tasks using workflow files. The workflow files are YML files which are stored in the root of the TeamsApp project.
+Teams Toolkit help developers automate tasks using workflow files. The workflow files are YML files which are stored in the root of the TeamsApp project. 
 
 ### Step 1: Review Teams Toolkit provisioning tasks
 
@@ -612,11 +530,11 @@ Continue in Visual Studio:
 
 The file contains a single stage called **Provision** which contains several tasks.
 
-1. **teamsApp/create**: Registers an app in Teams Developer Portal and writes the app ID to **env\env.local**.
-1. **aadApp/create**: Registers an app in Microsoft Entra and writes several values to **env\env.local**.
+1. **teamsApp/create**: Registers an app in Teams Developer Portal and writes the app ID to **env\.env.local**.
+1. **aadApp/create**: Registers an app in Microsoft Entra and writes several values to **env\.env.local**.
 1. **aadApp/update**: Applies an app manifest to the Microsoft Entra app registration.
-1. **arm/deploy**: Provisions the Azure Bot Service using Bicep. It writes several values back to **env\env.local**.
-1. **file/createOrUpdateJsonFile**: Updates appsettings.development.json file in the web app which can be used at runtime.
+1. **arm/deploy**: Provisions the Azure Bot Service using Bicep. It writes several values back to **env\.env.local**.
+1. **file/createOrUpdateJsonFile**: Updates **appsettings.development.json** file with environment variables which can be used by code at runtime.
 1. **teamsApp/validateManifest**: Validates the app manifest file.
 1. **teamsApp/zipAppPackage**: Creates the Teams app package.
 1. **teamsApp/validateAppPackage**: Validates the app package.
@@ -626,14 +544,11 @@ The file contains a single stage called **Provision** which contains several tas
 
 1. Right-click **TeamsApp** project.
 1. Expand the **Teams Toolkit** menu and select **Prepare Teams App Dependencies**.
-
-!IMAGE[create-complete.png](instructions275666/lab441-prepare-teams-app-dependencies.png)
-
 1. In the **Microsoft 365 account** dialog, select the account you used to create the Dev Tunnel earlier and select **Continue**. This will start the Dev Tunnel and write the tunnel endpoint and domain to the **env\env.local** file.
 1. In the **Provision** dialog, configure the resource group to be used to host the Azure Bot Service:
     1. **Subscription**: Expand the dropdown and select the subscription in the list
-    1. **Resource group**: Select **New...**, enter **rg-custom-engine-agent-local** the text field and then select **OK**.
-    1. **Region**: West US
+    1. **Resource group**: Select **New...**, enter rg-custom-engine-agent-local the text field and then select **OK**.
+    1. **Region**: Expand the dropdown and select a region from the list
     1. Select **Provision**
 1. In the warning prompt, select **Provision**.
 1. Wait for the process to complete, this can take a 1-3 minutes. Teams Toolkit will output its progress in the Output pane.
@@ -645,12 +560,14 @@ Take a minute to examine the Azure Bot Service resource in the Azure Portal.
 
 With everything in place, we are now ready to test our custom engine agent in Microsoft Teams for the first time.
 
-First, we need to start a debug session to start our local web app that contains the agent logic.
+First, we need to start a debug session to start our local web API that contains the agent logic.
 
 Continue in Visual Studio:
 
 1. To start a debug session, press <kbd>F5</kbd> on your keyboard, or select the **Start** button in the toolbar. A browser window is launched and navigates to Microsoft Teams.
-1. In the browser, sign in to Microsoft 365 using your Microsoft 365 account details.
+
+Continuing in the web browser:
+
 1. Wait for Microsoft Teams to load and for the App install dialog to appear.
 
 Previously, Teams Toolkit registered the app in the Teams Developer Portal. To use the app we need to install it for the current user. Teams Toolkit launches the browser using a special URL which enables developers to install the app before they test it.
@@ -667,15 +584,17 @@ Now let's test that everything is working as expected.
 
 Continuing in the web browser:
 
-1. Enter **Hello, world!** in the message box and press <kbd>Enter</kbd> to send the message to the agent. A typing indicator appears whilst waiting for the  agent to respond.
-1. Notice the natural language response from the agent and a label **Generated by AI** is shown in the agent response.
+1. Enter **Hello, world!** in the message box and press <kbd>Enter</kbd> to send the message to the agent. A typing indicator appears whilst waiting for the agent to respond.
+1. Notice the natural language response from the agent and a label **AI generated** is shown in the agent response.
 1. Continue a conversation with the agent.
 1. Go back to Visual Studio. Notice that in the Debug pane, Teams AI library is tracking the full conversation and displays appended conversation history in the output.
 1. Close the browser to stop the debug session.
 
-#### Step 4: Examine agent configuration
+### Step 4: Examine agent configuration
 
 The functionality of our agent is implemented using Teams AI library. Let's take a look at how our agent is configured.
+
+In Visual Studio:
 
 1. In the **Custom.Engine.Agent** project, open **Program.cs** file.
 1. Examine the contents of the file.
@@ -684,12 +603,12 @@ The file sets up the web application and integrates it with Microsoft Bot Framew
 
 - **WebApplicationBuilder**: Initializes web application with controllers and HTTP client services.
 - **Configuration**: Retrieve configuration options from the apps configration and sets up Bot Framework authentication.
-- **Dependency injection**: Registers BotFrameworkAuthentication and TeamsAdapter services. Configures Azure Blob Storage for persisting bot state and sets up an Azure OpenAI model service.
-- **Bot setup**: Registers the agent as a transient service. The agent logic is implemented using Teams AI library.
+- **Dependency injection**: Registers BotFrameworkAuthentication and TeamsAdapter services. Configures Azure Blob Storage for persisting agent state and sets up an Azure OpenAI model service.
+- **Agent setup**: Registers the agent as a transient service. The agent logic is implemented using Teams AI library.
 
 Let's take a look at the agent setup.
 
-```csharp
+```
 builder.Services.AddTransient<IBot>(sp =>
 {
     // Create loggers
@@ -727,12 +646,14 @@ builder.Services.AddTransient<IBot>(sp =>
 
 The key elements of the agent setup are:
 
-- **ILoggerFactory**: Used for logging messages to the output for debugging.
-- **PromptManager**: Determines the location of Prompts.
-- **ActionPlanner**: Determines which model and prompt should be used when handling a user message. By default, the planner uses a prompt template named 'Chat'.
+- **ILoggerFactory**: Used for logging messages to the output pane for debugging.
+- **PromptManager**: Determines the location of prompt templates.
+- **ActionPlanner**: Determines which model and prompt should be used when handling a user message. By default, the planner uses a prompt template named **Chat**.
 - **ApplicationBuilder**: Creates an object which represents a Bot that can handle incoming activities.
 
-### Exercise 3: Prompt templates
+The agent is added as a transient service which means that everytime a message is recieved from the Bot Framework, our agent code will be executed.
+
+## Exercise 3: Prompt templates
 
 Prompts play a crucial role in communicating and directing the behavior of language models.
 
@@ -743,7 +664,7 @@ Prompts are stored in the Prompts folder. A prompt is defined as a subfolder tha
 
 Here, you'll update the default prompt to change the agents behaviour.
 
-#### Step 1: Update prompt template
+### Step 1: Update prompt template
 
 Continuing in Visual Studio:
 
@@ -751,7 +672,7 @@ Continuing in Visual Studio:
 1. In the **Chat** folder, open the **skprompt.txt** file. 
 1. Update the contents of the file:
 
-    ```text
+    ```
     You are a career specialist named "Career Genie" that helps Human Resources team for writing job posts.
     You are friendly and professional.
     You always greet users with excitement and introduce yourself first.
@@ -760,26 +681,26 @@ Continuing in Visual Studio:
 
 1. Save changes.
 
-#### Step 2: Test the new prompt
+### Step 2: Test the new prompt
 
-Continuing in Visual Studio:
+Now let's test our change.
 
-1. Start a debug session, by pressing <kbd>F5</kbd> on your keyboard, or selecting the **Start** button in the toolbar. 
+1. To start a debug session, press <kbd>F5</kbd> on your keyboard, or select the **Start** button in the toolbar.
 
 Continuing in the web browser:
 
 1. In the app dialog, select **Open** to open the agent in Microsoft Teams.
-1. In the message box, enter ++Hi++ and send the message. Wait for the response. Notice the change in the response.
-1. In the message box, enter +++Can you help me write a job post for a Senior Developer role?+++ and send the message. Wait for the response.
+1. In the message box, enter **Hi** and send the message. Wait for the response. Notice the change in the response.
+1. In the message box, enter **Can you help me write a job post for a Senior Developer role?** and send the message. Wait for the response.
 
 Continue the conversation by sending more messages.
 
-- +++What would be the list of required skills for a Project Manager role?+++
-- +++Can you share a job template?+++
+- **What would be the list of required skills for a Project Manager role?**
+- **Can you share a job template?**
 
 Close the browser to stop the debug session.
 
-## Exercise 4: Suggested prompts
+## Exercise 3: Suggested prompts
 
 Suggested prompts are shown in the user interface and a good way for users to discover how the agent can help them through examples.
 
@@ -791,46 +712,72 @@ Continuing in Visual Studio:
 
 1. In the **TeamsApp** project, expand the **appPackage** folder.
 1. In the **appPackage** folder, open the **manifest.json** file.
-1. Replace the **bots** property with this, which adds a **commandLists** array property.
+1. In the **bots** array property, expand the first object with a **commandLists** array property.
 
     ```
-    "bots": [
+    "commandLists": [
+        {
+            "scopes": [
+                "personal"
+            ],
+            "commands": [
+                {
+                    "title": "Write a job post for <role>",
+                    "description": "Generate a job posting for a specific role"
+                },
+                {
+                    "title": "Skill required for <role>",
+                    "description": "Identify skills required for a specific role"
+                }
+            ]
+        }
+    ]
+    ```
+1. Save your changes.
+
+The **bots** array property should look like:
+
+```
+"bots": [
+  {
+    "botId": "${{BOT_ID}}",
+    "scopes": [
+      "personal"
+    ],
+    "supportsFiles": false,
+    "isNotificationOnly": false,
+    "commandLists": [
       {
-        "botId": "${{BOT_ID}}",
         "scopes": [
           "personal"
         ],
-        "supportsFiles": false,
-        "isNotificationOnly": false,
-        "commandLists": [
+        "commands": [
           {
-             "scopes": [
-               "personal"
-             ],
-             "commands": [
-               {
-                 "title": "Write a job post for <role>",
-                 "description": "Generate a job posting for a specific role"
-               },
-               {
-                 "title": "Skill required for <role>",
-                 "description": "Identify skills required for a specific role"
-               }
-            ]
+            "title": "Write a job post for <role>",
+            "description": "Generate a job posting for a specific role"
+          },
+          {
+            "title": "Skill required for <role>",
+            "description": "Identify skills required for a specific role"
           }
         ]
       }
-    ],
-    ```
+    ]
+  }
+],
+```
 
 ### Step 2: Test suggested prompts
 
-As we've made a change to the app manifest file, we need to Run the Prepare Teams App Dependencies process to update the app registration in the Teams Developer Portal.
+As you've made a change to the app manifest file, we need to Run the Prepare Teams App Dependencies process to update the app registration in the Teams Developer Portal before starting a debug session to test it.
 
 Continuing in Visual Studio:
 
 1. Right-click **TeamsApp** project, expand the **Teams Toolkit** menu and select **Prepare Teams App Dependencies**.
 1. Confirm the prompts and wait till the process completes.
+
+Now let's test the change.
+
 1. Start a debug session, press <kbd>F5</kbd> on your keyboard, or select the **Start** button in the toolbar.
 
 Continuing in the web browser:
@@ -838,20 +785,18 @@ Continuing in the web browser:
 1. In the app dialog, select **Open** to open the agent in Microsoft Teams.
 1. Above the message box, select **View prompts** to open the prompt suggestions flyout.
 1. In the **Prompts** dialog, select one of the prompts. The text is added into the message box.
+1. In the message box, replace <b>&lt;role&gt;</b> with a job title, for example, **Senior Software Engineer**, and send the message.
 
-!IMAGE[create-complete.png](instructions275666/lab441-view-prompts.png)
-
-1. In the message box, replace **<role>** with a job title, for example, +++Senior Software Engineer+++, and send the message.
-
-> [!NOTE]
-> The suggested prompts can also be seen when the user opens the agent for the first time.
+The prompt suggestions can also be seen when the user opens the agent for the first time.
 
 Continuing in the web browser:
 
 1. In the Microsoft Teams side bar, go to **Chat**.
-1. Find the chat with the name **Custom Engine Agent** in the list and select the **...** menu.
+1. Find the chat with the name **Custom engine agent** in the list and select the **...** menu.
 1. Select **Delete** and confirm the action.
 1. In the Microsoft Teams side bar, select **...** to open the apps flyout.
-1. Select **Custom Engine Agent** to start a new chat. The two UI prompts are shown in the user interface.
+1. Select **Custom engine agent** to start a new chat. The two suggested prompts are shown in the user interface.
+
+Close the browser to stop the debug session.
 
 # CONGRATULATIONS you have completed Lab 441!
