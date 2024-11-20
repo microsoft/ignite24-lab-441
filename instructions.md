@@ -8,6 +8,7 @@ Lab requirements
 - Microsoft 365 tenant with Microsoft 365 Copilot enabled and custom app upload enabled
 - Visual Studio Code
 - Teams Toolkit extension
+- SharePoint site with [documents](./docs) uploaded to Documents library
 
 ## Overview
 
